@@ -8,10 +8,10 @@ from AppBlog import models
 class PostList(ListView):
 
     queryset = models.Post.objects.filter(status=1).order_by("-created_on")
-    template_name = "AppBlog/post-list.html"
+    template_name = "AppBlog/post-list-index.html"
 
 # VIEW TO CHECK THE DETAIL OF A PARTICULAR POST
 class PostDetail(DetailView):
 
     model = models.Post
-    template_name = "AppBlog/post-detail.html"
+    template_name = "AppBlog/post-detail-index.html"
