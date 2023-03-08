@@ -1,0 +1,21 @@
+{% extends 'AppBlog/index.html' %} {% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h1>Formulario - Editar perfil</h1>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <table>
+                {{ mi_formulario.as_table }}
+            </table>
+            <input type="submit" value="Editar">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

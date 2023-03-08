@@ -23,5 +23,8 @@ urlpatterns = [
     path("login/", views.login_request, name="appblog-login"),
     path("logout/", LogoutView.as_view(template_name="AppBlog/post-logout.html"), name="appblog-logout"),
     path("eliminar/<slug:slug>", views.PostDelete.as_view(), name="appblog-eliminar"),
-    path("editar/<slug:slug>", views.PostUpdate.as_view(), name="appblog-editar")
+    path("editar/<slug:slug>", views.PostUpdate.as_view(), name="appblog-editar"),
+    path("agregar-avatar/", views.agregar_avatar, name="appblog-avatar"),
+    path("editar-perfil/", views.editar_perfil, name="appblog-perfil"),
+    path("register/", views.register, name="appblog-register")
 ]
