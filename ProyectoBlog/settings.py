@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from django.urls import reverse_lazy
+
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -55,6 +57,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'ProyectoBlog.urls'
 
 #TEMPLATE_DIRS = os.path.join(BASE_DIR, 'templates')# 'AppBlog/templates/AppBlog')
+LOGIN_URL = reverse_lazy("appblog-login")
 
 TEMPLATES = [
     {

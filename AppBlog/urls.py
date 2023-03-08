@@ -17,5 +17,10 @@ urlpatterns = [
     #path("eliminar-profesor/<profesor_id>", views.eliminar_profesor, name="eliminar-profesor"),
     #path("editar-profesor/<profesor_id>", views.editar_profesor, name="editar-profesor")
     path("", views.PostList.as_view(), name="appblog-inicio"),
-    path("detalle/<slug:slug>", views.PostDetail.as_view(), name="appblog-detalle")
+    path("detalle/<slug:slug>", views.PostDetail.as_view(), name="appblog-detalle"),
+    path("creacion/", views.PostCreate.as_view(), name="appblog-creacion"),
+    path("login/", views.login_request, name="appblog-login"),
+    path("logout/", LogoutView.as_view(template_name="AppBlog/post-logout.html"), name="appblog-logout"),
+    path("eliminar/<slug:slug>", views.PostDelete.as_view(), name="appblog-eliminar"),
+    path("editar/<slug:slug>", views.PostUpdate.as_view(), name="appblog-editar")
 ]

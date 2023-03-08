@@ -32,6 +32,8 @@
                     <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
                     <p class="card-text">{{post.content|slice:":200" }}</p>
                     <a href="{% url 'appblog-detalle' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+                    <a href="{% url 'appblog-eliminar' post.slug  %}" class="btn btn-secondary">Delete post &rarr;</a>
+                    <a href="{% url 'appblog-editar' post.slug  %}" class="btn btn-info">Edit post &rarr;</a>
                 </div>
             </div>
             {% endfor %}

@@ -1,0 +1,23 @@
+{% extends 'AppBlog/index.html' %}
+
+{% block titulo %}
+    Eliminar post
+{% endblock titulo %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h1>Eliminar post</h1>
+        <form method="post">
+            {% csrf_token %}
+            <p>Desea elimniar el curso {{ object }}</p>
+            <input type="submit" value="Seguro">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

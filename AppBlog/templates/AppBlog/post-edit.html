@@ -1,0 +1,23 @@
+{% extends 'AppBlog/index.html' %}
+
+{% block titulo %}
+    Editar post
+{% endblock titulo %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h1>Editar post</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Enviar">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
