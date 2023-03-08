@@ -22,3 +22,4 @@ class CommentAdmin(admin.ModelAdmin):
     
 admin.site.register(models.Post)
 admin.site.register(models.Comment)
+admin.site.register(models.Avatar)

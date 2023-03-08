@@ -39,3 +39,15 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Comment {} by {}'.format(self.body, self.name)
+    
+# MODEL AVATARES
+class Avatar(models.Model):
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    imagen = models.ImageField(upload_to="avatares", blank=True, null=True, default="blank.png")
+
+    def __str__(self) -> str:
+        return self.user.username
+    
+    class Meta:
+        verbose_name_plural = "Avatares"
