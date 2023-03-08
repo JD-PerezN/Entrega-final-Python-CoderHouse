@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -6,6 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 
 from AppBlog import models
+from AppBlog import forms
 
 ### Create your views here.
 ## VIEWS BASED ON CLASSES
@@ -16,10 +17,30 @@ class PostList(ListView):
     template_name = "AppBlog/post-list-index.html"
 
 # VIEW TO CHECK THE DETAIL OF A PARTICULAR POST
-class PostDetail(DetailView):
+#class PostDetail(DetailView):
 
-    model = models.Post
-    template_name = "AppBlog/post-detail-index.html"
+#    model = models.Post
+#    template_name = "AppBlog/post-detail-index.html"
+def post_detail(request, slug):
+    template_name = 'AppBlog/post-detail-index.html'
+    post = get_object_or_404(models.Post, slug=slug)
+    comments = post.comments.filter(active=True)
+    new_comment = None
+    # Comment posted
+    if request.method == 'POST':
+        comment_form = forms.CommentForm(data=request.POST)
+        if comment_form.is_valid():
+
+            new_comment = comment_form.save(commit=False)
+            new_comment.post = post
+            new_comment.save()
+    else:
+        comment_form = forms.CommentForm()
+
+    return render(request, template_name, {'post': post,
+                                           'comments': comments,
+                                           'new_comment': new_comment,
+                                           'comment_form': comment_form})
 
 #VIEW TO CREATE A NEW POST
 class PostCreate(LoginRequiredMixin, CreateView):
