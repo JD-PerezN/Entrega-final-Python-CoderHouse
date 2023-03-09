@@ -28,3 +28,7 @@ Julián David Pérez Navarro
 * Creación del super usuario para la administración del proyecto de djanjo con el comando `python manage.py createsuperuser`. Una vez ejecutado el comando, ingresar los campos requeridos (email, usuario y contraseña)
 * Ejecución del proyecto de django usando `python manage.py runserver`
     * Para asegurar la correcta creación y administración del proyecto, dirigirse a la url `http://127.0.0.1:8000/admin`
+    
+## Video presentación
+En el siguiente link de Google Drive, se encuentra el video donde se expone el funcionamiento del sitio web
+[Video blog proyecto final](https://drive.google.com/file/d/1-XXsJlme1brQPspHIKPbLstJoRES2euH/view?usp=sharing)
