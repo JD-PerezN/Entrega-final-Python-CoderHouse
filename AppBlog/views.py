@@ -11,6 +11,7 @@ from AppBlog import models
 from AppBlog import forms
 
 ### Create your views here.
+
 ## VIEWS BASED ON CLASSES
 # VIEW TO SEE THE LIST OF POST
 class PostList(ListView):
@@ -41,22 +42,7 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy("appblog-inicio")
     fields = ["title", "slug", "author", "content", "status"]
      
-## VIEWS BASED ON FUNCTIONS
-
-#def register(req):
-#    if req.method == "POST":
-#        form = forms.MyUserCreationForm(req.POST)
-
-#        if form.is_valid():
-#            username = form.cleaned_data["username"]
-#            contexto = {"mensaje": "usuario creado"}
-#            return render(req, "AppBlog/post-list-index.html", contexto)
-    
-#    else:
-#        form = forms.MyUserCreationForm()
-#        contexto = {"form": form}
-#        return render(req, "AppBlog/user-create.html", contexto)
-    
+## VIEWS BASED ON FUNCTIONS    
 # View to login in the website
 def login_request(req):
 
@@ -94,7 +80,7 @@ def post_detail(request, slug):
     post = get_object_or_404(models.Post, slug=slug)
     comments = post.comments.filter(active=True)
     new_comment = None
-    # Comment posted
+
     if request.method == 'POST':
         comment_form = forms.CommentForm(data=request.POST)
         if comment_form.is_valid():
