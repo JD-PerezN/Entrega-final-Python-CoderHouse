@@ -44,8 +44,8 @@ class Comment(models.Model):
 class Avatar(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    imagen = models.ImageField(upload_to="avatares", blank=True, null=True, default="blank.png")
-
+    imagen = models.ImageField(upload_to="avatares", blank=True, default="avatares/Icono_anime_DMC.png")
+    
     def __str__(self) -> str:
         return self.user.username
     

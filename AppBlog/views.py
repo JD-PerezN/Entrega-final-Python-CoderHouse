@@ -43,21 +43,19 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
      
 ## VIEWS BASED ON FUNCTIONS
 
-def register(req):
+#def register(req):
+#    if req.method == "POST":
+#        form = forms.MyUserCreationForm(req.POST)
 
-    if req.method == "POST":
-        form = UserCreationForm(req.POST)
-
-        if form.is_valid():
-            username = form.cleaned_data["username"]
-            form.save()
-            contexto = {"mensaje": "Usuario creado satisfactoriamente"}
-            return render(req, "AppBlog/post-list-index.html", contexto)
-        
-    else:
-        form = UserCreationForm()
-        contexto = {"form": form}
-        return render(req, "AppBlog/post-register.html", contexto)
+#        if form.is_valid():
+#            username = form.cleaned_data["username"]
+#            contexto = {"mensaje": "usuario creado"}
+#            return render(req, "AppBlog/post-list-index.html", contexto)
+    
+#    else:
+#        form = forms.MyUserCreationForm()
+#        contexto = {"form": form}
+#        return render(req, "AppBlog/user-create.html", contexto)
     
 # View to login in the website
 def login_request(req):
@@ -69,10 +67,9 @@ def login_request(req):
 
         if form.is_valid():
             usuario = form.cleaned_data.get("username")
-            email = form.cleaned_data.get("email")
             contra = form.cleaned_data.get("password")
 
-            user = authenticate(username=usuario, email=email, password=contra)
+            user = authenticate(username=usuario, password=contra)
 
             if user is not None:
                 login(req, user)
@@ -158,18 +155,18 @@ def editar_perfil(req):
     return render(req, "AppBlog/user-update.html", {"mi_formulario": mi_formulario})
 
 # View to create a new user in the website
-def register(req):
+def register_username(req):
 
     if req.method == "POST":
-        form = UserCreationForm(req.POST)
+        form = forms.MyUserCreationForm(req.POST)
 
         if form.is_valid():
             username = form.cleaned_data["username"]
             form.save()
             contexto = {"mensaje": "Usuario creado satisfactoriamente"}
-            return render(req, "AppBlog/post-detail-index.html", contexto)
+            return render(req, "AppBlog/post-list-index.html", contexto)
         
     else:
-        form = UserCreationForm()
+        form = forms.MyUserCreationForm()
         contexto = {"form": form}
         return render(req, "AppBlog/user-create.html", contexto)

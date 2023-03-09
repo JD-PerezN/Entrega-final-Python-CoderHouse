@@ -26,3 +26,15 @@ class UserEditForm(forms.Form):
     email = forms.EmailField(label="Correo")
     first_name = forms.CharField(label="Nombre")
     last_name = forms.CharField(label="Apellido")
+
+# Creation user form
+class MyUserCreationForm(UserCreationForm):
+
+    username = forms.CharField(label="Nombre de usuario", widget=forms.TextInput)
+    password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
+    password2 = forms.CharField(label="Repetir la contraseña", widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ["username", "password1", "password2"]
+        help_texts = {k: "" for k in fields}
