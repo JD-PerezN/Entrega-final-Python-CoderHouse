@@ -13,5 +13,5 @@ urlpatterns = [
     path("editar/<slug:slug>", views.PostUpdate.as_view(), name="appblog-editar"),
     path("agregar-avatar/", views.agregar_avatar, name="appblog-avatar"),
     path("editar-perfil/", views.editar_perfil, name="appblog-perfil"),
-    path("crear-usuario/", views.register_username, name="appblog-create")
+    path("crear-usuario/", views.register_username, name="appblog-create"),
 ]
